@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Descriptive meta tags -->
+    <meta name="title" content="Cadence" />
+    <meta
+      name="description"
+      content="A web based music player application coded by Dhrubajyoti Bhattacharjee"
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Material symbols rounded -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,-25"
+    />
+
+    <title>Cadence</title>
+  </head>
+
+  <body>
+    <!-- Top-bar -->
+    <header class="header | flex-group">
+      <div class="logo-container | flex-group">
+        <i class="material-symbols-rounded">graphic_eq</i>
+
+        <h1 class="title-lg">Cadence</h1>
+      </div>
+
+      <div class="header-action-btns">
+        <button type="button" class="icon-btn" data-playlist-toggler>
+          <i class="material-symbols-rounded">queue_music</i>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <!-- Music player -->
+      <article class="music-player">
+        <div class="wrapper">
+          <h2 class="sr-only">Current music</h2>
+
+          <figure class="music-banner">
+            <img
+              src="/posters/poster-1.jpg"
+              width="800"
+              height="800"
+              alt="Happy Moments (Master) Album Poster"
+              class="thumbnail"
+              data-thumbnail
+            />
+          </figure>
+
+          <section class="music">
+            <h2 class="headline-sm" data-music-title>Happy Moments (Master)</h2>
+
+            <p class="music-label-container | label-lg flex-group">
+              <span data-music-album>No spirit</span>
+
+              <span data-year>2022</span>
+            </p>
+
+            <p class="artist | label-md" data-artist>No Spirit x Tonion</p>
+
+            <div class="music-and-volume-progression-controls">
+              <div>
+                <div class="progress-bar-container">
+                  <input
+                    type="range"
+                    step="1"
+                    max="60"
+                    value="0"
+                    class="progress-bar"
+                    id="music-progress-bar"
+                    data-progress-bar
+                  />
+
+                  <label for="music-progress-bar" class="sr-only"
+                    >Music progression bar</label
+                  >
+
+                  <div class="progress-fill" data-progress-fill></div>
+                </div>
+
+                <div class="timestamp-container | flex-group">
+                  <span class="label-md" data-elapsed-time>0 : 00</span>
+
+                  <span class="label-md" data-total-duration></span>
+                </div>
+              </div>
+
+              <div class="volume">
+                <button type="button" class="icon-btn" data-volume-btn>
+                  <i class="material-symbols-rounded">volume_up</i>
+                </button>
+
+                <div class="progress-bar-container">
+                  <input
+                    type="range"
+                    step="0.05"
+                    max="1"
+                    value="1"
+                    class="progress-bar"
+                    id="volume-progress-bar"
+                    data-progress-bar
+                    data-volume-bar
+                  />
+
+                  <label for="volume-progress-bar" class="sr-only"
+                    >Volume bar</label
+                  >
+
+                  <div class="progress-fill" data-progress-fill></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="music-player-controls | flex-group">
+              <button type="button" class="toggle | icon-btn" data-repeat-btn>
+                <i class="material-symbols-rounded default-icon">repeat</i>
+
+                <i class="material-symbols-rounded active-icon">repeat_one</i>
+              </button>
+
+              <button type="button" class="icon-btn" data-skip-to-previous-btn>
+                <i class="material-symbols-rounded">skip_previous</i>
+              </button>
+
+              <button type="button" class="play-btn | icon-btn" data-play-btn>
+                <i class="material-symbols-rounded default-icon">play_arrow</i>
+
+                <i class="material-symbols-rounded active-icon">pause</i>
+              </button>
+
+              <button type="button" class="icon-btn" data-skip-to-next-btn>
+                <i class="material-symbols-rounded">skip_next</i>
+              </button>
+
+              <button type="button" class="toggle | icon-btn" data-shuffle-btn>
+                <i class="material-symbols-rounded">shuffle</i>
+              </button>
+            </div>
+          </section>
+        </div>
+      </article>
+
+      <!-- Playlist -->
+      <section class="playlist" data-playlist>
+        <h2 class="sr-only">Playlist</h2>
+
+        <ul class="music-tracks" data-music-tracks>
+          <!-- <li>
+            <button
+              type="button"
+              class="music-track"
+              data-playlist-toggler
+              data-music-track="0"
+            >
+              <img
+                src="/posters/poster-1.jpg"
+                width="800"
+                height="800"
+                class="thumbnail"
+                alt="Happy Moments (Master) Album Poster"
+              />
+
+              <div class="icon-item">
+                <i class="material-symbols-rounded">equalizer</i>
+              </div>
+            </button>
+          </li> -->
+        </ul>
+      </section>
+
+      <!-- Overlay -->
+      <div class="overlay" data-overlay data-playlist-toggler></div>
+    </main>
+
+    <script type="module" src="./src/js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,203 @@
+:root {
+  /* Colors */
+  --eerie-black_a95: hsla(204, 9%, 11%, 0.95);
+  --eerie-black_a50: hsla(204, 9%, 11%, 0.5);
+  --eerie-black: hsl(204, 9%, 11%);
+  --gainsboro: hsl(225, 7%, 89%);
+  --charcoal: hsl(203, 9%, 28%);
+  --silver-sand: hsl(208, 12%, 78%);
+  --light-sky-blue: hsl(200, 100%, 73%);
+  --prussian-blue: hsl(196, 100%, 14%);
+  --black: hsl(0, 0%, 0%);
+  --black_a50: hsla(0, 0%, 0%, 0.5);
+  --black_a20: hsla(0, 0%, 0%, 0.2);
+  --light-sky-blue_a8: hsla(200, 100%, 73%, 0.08);
+  --light-sky-blue_a12: hsla(200, 100%, 73%, 0.12);
+  --silver-sand_a8: hsla(208, 12%, 78%, 0.08);
+  --silver-sand_a12: hsla(208, 12%, 78%, 0.12);
+
+  --background: var(--eerie-black);
+  --background-opacity: var(--eerie-black_a95);
+  --on-background: var(--gainsboro);
+  --surface-variant: var(--charcoal);
+  --on-surface-variant: var(--silver-sand);
+  --on-surface-variant-hover: var(--light-sky-blue_a8);
+  --on-surface-variant-focus: var(--light-sky-blue_a12);
+  --primary: var(--light-sky-blue);
+  --on-primary: var(--prussian-blue);
+
+  /* Gradient */
+  --gradient: linear-gradient(
+    180deg,
+    hsla(204, 9%, 11%, 0.9) 60%,
+    transparent 120%
+  );
+
+  /* Typography */
+  --ff: "Inter", sans-serif;
+
+  --headline-sm: 2.4rem;
+  --title-lg: 2.2rem;
+  --label-lg: 1.4rem;
+  --label-md: 1.2rem;
+
+  --fw-400: 400;
+  --fw-500: 500;
+
+  /* Box shadow */
+  --shadow-1: 0 1px 4px 1px var(--black_a20);
+  --shadow-2: 0 1px 4px 1px var(--black_a50);
+
+  /* Border radius */
+  --radius-24: 24px;
+  --radius-16: 16px;
+  --radius-12: 12px;
+  --radius-pill: 100px;
+  --radius-circle: 50%;
+
+  /* Transition */
+  --transition-1: 200ms cubic-bezier(0.2, 0, 0, 1);
+  --transition-2: 300ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* A basic CSS reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  color-scheme: dark;
+  font-family: var(--ff);
+  font-size: 62.5%; /* 10px */
+  scroll-behavior: smooth;
+}
+
+a,
+i,
+span,
+button,
+input {
+  display: block;
+}
+
+a {
+  text-decoration: none;
+}
+
+input,
+button {
+  background-color: transparent;
+  font: inherit;
+  border: none;
+}
+
+input {
+  width: 100%;
+}
+
+button {
+  cursor: pointer;
+}
+
+img,
+picture,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+li {
+  list-style: none;
+}
+
+/* Global styles */
+body {
+  min-height: 100vh;
+  min-height: 100svh;
+  min-width: 25rem;
+  background-color: var(--black);
+  background-image: url("/posters/poster-1.jpg");
+  background-size: 150%;
+  background-position: top;
+  background-repeat: no-repeat;
+  color: var(--on-background);
+  font-size: 1.6rem;
+  overflow: auto;
+}
+
+body.modal-active {
+  overflow: hidden;
+}
+
+body::-webkit-scrollbar {
+  width: 8px;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: var(--radius-pill);
+}
+
+body:hover::-webkit-scrollbar-thumb {
+  background-color: var(--on-surface-variant);
+}
+
+/* Overlay styles */
+.overlay {
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  background-color: var(--black);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+
+  pointer-events: none;
+  opacity: 0;
+  transition: var(--transition-2);
+  transition-property: pointer-events, opacity;
+}
+
+.overlay.active {
+  pointer-events: all;
+  opacity: 0.5;
+}
+
+/* Responsiveness for screen sizes >= 575px */
+@media (width >= 575px) {
+  body {
+    background-size: 100%;
+  }
+}
+
+/* Responsiveness for screen sizes >= 992px */
+@media (width >= 992px) {
+  :root {
+    --headline-sm: 4.2rem;
+    --label-lg: 2.2rem;
+  }
+
+  body {
+    background-size: 40% 100%;
+    background-position: left center;
+  }
+
+  main {
+    display: flex;
+  }
+
+  .overlay {
+    display: none;
+  }
+}

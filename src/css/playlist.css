@@ -1,0 +1,103 @@
+.playlist {
+  width: 18rem;
+  height: 100vh;
+  height: 100svh;
+  background-color: var(--background);
+  border-top-left-radius: var(--radius-16);
+  border-bottom-left-radius: var(--radius-16);
+  padding: 2.8rem;
+  box-shadow: var(--shadow-2);
+  overflow-y: auto;
+
+  position: fixed;
+  top: 0;
+  right: -18rem;
+  z-index: 4;
+
+  visibility: hidden;
+  transition: var(--transition-2);
+}
+
+.playlist:hover::-webkit-scrollbar-thumb {
+  background-color: var(--surface-variant);
+}
+
+.playlist.active {
+  visibility: visible;
+  transform: translateX(-18rem);
+}
+
+.music-tracks {
+  display: grid;
+  gap: 2rem;
+}
+
+.music-track {
+  background-color: var(--surface-variant);
+  border-radius: var(--radius-12);
+  overflow: hidden;
+
+  position: relative;
+}
+
+.music-track .icon-item {
+  background-color: var(--eerie-black_a50);
+
+  position: absolute;
+  inset: 0;
+
+  display: grid;
+  place-items: center;
+
+  opacity: 0;
+}
+
+.music-track.playing .icon-item {
+  opacity: 1;
+}
+
+.music-track .icon-item i {
+  color: var(--primary);
+  font-size: 3rem;
+}
+
+.music-track:where(.playing, :hover, :focus-visible, :active) {
+  outline: 1px solid var(--primary);
+}
+
+/* Responsiveness for screen sizes >= 992px */
+@media (width >= 992px) {
+  .playlist {
+    position: static;
+
+    visibility: visible;
+    border-radius: 0;
+    box-shadow: none;
+
+    flex-shrink: 0;
+  }
+
+  .playlist.active {
+    transform: unset;
+  }
+
+  .music-track:where(.playing, :hover, :focus-visible, :active) {
+    outline-width: 2px;
+  }
+
+  .music-track .icon-item i {
+    font-size: 3.6rem;
+  }
+}
+
+/* Responsiveness for screen sizes >= 1200px */
+@media (width >= 1200px) {
+  .playlist {
+    width: 22rem;
+    padding: 3.2rem;
+  }
+
+  .music-tracks {
+    gap: 2.8rem;
+  }
+}

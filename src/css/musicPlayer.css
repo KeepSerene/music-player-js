@@ -1,0 +1,245 @@
+.music-player {
+  --padding: 2.4rem;
+
+  min-height: 100vh;
+  min-height: 100svh;
+  background-image: var(--gradient);
+  backdrop-filter: blur(30px);
+  text-align: center;
+  padding: var(--padding);
+  padding-top: calc(6.4rem + var(--padding));
+  /* padding-top = header height + padding */
+  overflow: hidden;
+
+  display: flex;
+}
+
+.music-player .wrapper {
+  width: 100%;
+
+  display: grid;
+  grid-template-rows: 1fr max-content;
+  gap: 2.4rem;
+}
+
+.music-banner {
+  max-width: 40rem;
+  background-color: var(--surface-variant);
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-24);
+  margin-inline: auto;
+  overflow: hidden;
+
+  align-self: center;
+}
+
+.thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.music-label-container {
+  justify-content: center;
+
+  text-transform: capitalize;
+  margin-block: 0.8rem 0.4rem;
+  opacity: 0.8;
+}
+
+.music-label-container span:first-child::after {
+  content: "|";
+  display: inline-block;
+  margin-inline: 0.4rem;
+}
+
+.artist {
+  opacity: 0.6;
+  margin-bottom: 3.6rem;
+}
+
+.music-and-volume-progression-controls {
+  margin-bottom: 2rem;
+}
+
+.progress-bar-container {
+  position: relative;
+}
+
+.progress-bar {
+  appearance: none;
+  cursor: pointer;
+}
+
+.progress-fill {
+  width: 0;
+  height: 0.6rem;
+  background-color: var(--primary);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  pointer-events: none;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.progress-bar::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 0.6rem;
+  appearance: none;
+  background-color: var(--on-surface-variant);
+  border-radius: var(--radius-pill);
+}
+
+.progress-bar::-webkit-slider-thumb {
+  appearance: none;
+  width: 1.6rem;
+  height: 1.6rem;
+  background-color: var(--primary);
+  border-radius: var(--radius-pill);
+  margin-top: -0.5rem;
+
+  transition: var(--transition-1);
+}
+
+.progress-bar::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 0 12px var(--on-surface-variant-hover);
+}
+
+.progress-bar::-webkit-slider-thumb:where(:focus, :focus-visible) {
+  box-shadow: 0 0 0 12px var(--on-surface-variant-focus);
+}
+
+.timestamp-container {
+  justify-content: space-between;
+
+  margin-top: 1.2rem;
+}
+
+.volume {
+  display: none;
+}
+
+.music-player-controls {
+  justify-content: space-evenly;
+}
+
+.music-player-controls .toggle.active {
+  color: var(--primary);
+}
+
+.music-player-controls .play-btn {
+  background-color: var(--surface-variant);
+  color: var(--primary);
+}
+
+.music-player-controls .play-btn.active {
+  background-color: var(--primary);
+  color: var(--on-primary);
+}
+
+.music-player-controls .icon-btn.active .default-icon,
+.music-player-controls .icon-btn .active-icon {
+  display: none;
+}
+
+.music-player-controls .icon-btn .default-icon,
+.music-player-controls .icon-btn.active .active-icon {
+  display: block;
+}
+
+/* Responsiveness for screen sizes >= 575px */
+@media (width >= 575px) {
+  .music-player {
+    justify-content: center;
+  }
+
+  .music-player .wrapper {
+    max-width: 54rem;
+  }
+}
+
+/* Responsiveness for screen sizes >= 992px */
+@media (width >= 992px) {
+  .music-player {
+    --padding: 4.8rem;
+
+    backdrop-filter: blur(100px);
+    text-align: left;
+
+    flex-grow: 1;
+    align-items: center;
+  }
+
+  .music-player .wrapper {
+    max-width: 120rem;
+    max-height: 50rem;
+    height: 100%;
+
+    grid-template-columns: 0.8fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 4.8rem;
+  }
+
+  .music-banner {
+    max-width: max-content;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: unset;
+  }
+
+  .music {
+    min-width: 100%;
+    padding-top: 4.8rem;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  .music :is(.headline-sm, .label-lg, .label-md) {
+    max-width: 85%;
+  }
+
+  .music-label-container {
+    justify-content: start;
+
+    margin-block-end: 0.8rem;
+  }
+
+  .artist {
+    --label-md: 1.8rem;
+  }
+
+  .music-and-volume-progression-controls {
+    margin-top: auto;
+
+    display: grid;
+    grid-template-columns: 1fr 15rem;
+    align-items: center;
+    gap: 2.4rem;
+  }
+
+  .volume {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+
+    margin-top: -3rem;
+  }
+
+  .volume .icon-btn {
+    flex-shrink: 0;
+  }
+
+  .volume .progress-fill {
+    width: 100%;
+  }
+
+  .music-player-controls {
+    min-width: max-content;
+    margin-right: 17.4rem;
+
+    gap: 0.8rem;
+  }
+}
